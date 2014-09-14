@@ -22,7 +22,7 @@ find_package(OpenCV REQUIRED)
 add_definitions(${Qt4_DEFINITIONS})
 add_definitions(${OpenCV_DEFINITIONS})
 include_directories(include ${catkin_INCLUDE_DIRS})
-include_directories(${QT_INCLUDE_DIR})
+include_directories(${QT_INCLUDE_DIR} ${QT_INCLUDE_DIR}/QtCore ${QT_INCLUDE_DIR}/QtGui)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 ##############################################################################
