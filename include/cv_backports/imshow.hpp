@@ -21,41 +21,8 @@
 namespace cv_backports {
 
 /*****************************************************************************
-** Basic Gui Functions - replicated from highgui_c.h
-*****************************************************************************/
-
-CvFont cvFontQt(const char* nameFont, int pointSize CV_DEFAULT(-1), cv::Scalar color CV_DEFAULT(cvScalarAll(0)), int weight CV_DEFAULT(CV_FONT_NORMAL),  int style CV_DEFAULT(CV_STYLE_NORMAL), int spacing CV_DEFAULT(0));
-
-void cvAddText(const CvArr* img, const char* text, CvPoint org, CvFont *arg2);
-
-void cvDisplayOverlay(const char* name, const char* text, int delayms CV_DEFAULT(0));
-void cvDisplayStatusBar(const char* name, const char* text, int delayms CV_DEFAULT(0));
-
-void cvSaveWindowParameters(const char* name);
-void cvLoadWindowParameters(const char* name);
-
-typedef void (CV_CDECL *CvButtonCallback)(int state, void* userdata);
-enum {CV_PUSH_BUTTON = 0, CV_CHECKBOX = 1, CV_RADIOBOX = 2};
-int cvCreateButton( const char* button_name CV_DEFAULT(NULL),CvButtonCallback on_change CV_DEFAULT(NULL), void* userdata CV_DEFAULT(NULL) , int button_type CV_DEFAULT(CV_PUSH_BUTTON), int initial_button_state CV_DEFAULT(0));
-
-int cvWaitKey(int delay);
-
-/*****************************************************************************
 ** High Gui Functions - replicated from highgui.hpp
 *****************************************************************************/
-
-//enum {
-//    // Flags for namedWindow
-//    WINDOW_NORMAL   = CV_WINDOW_NORMAL,   // the user can resize the window (no constraint) / also use to switch a fullscreen window to a normal size
-//    WINDOW_AUTOSIZE = CV_WINDOW_AUTOSIZE, // the user cannot resize the window, the size is constrainted by the image displayed
-//    WINDOW_OPENGL   = CV_WINDOW_OPENGL,   // window with opengl support
-//
-//    // Flags for set / getWindowProperty
-//    WND_PROP_FULLSCREEN   = CV_WND_PROP_FULLSCREEN,  // fullscreen property
-//    WND_PROP_AUTOSIZE     = CV_WND_PROP_AUTOSIZE,    // autosize property
-//    WND_PROP_ASPECT_RATIO = CV_WND_PROP_ASPECTRATIO, // window's aspect ration
-//    WND_PROP_OPENGL       = CV_WND_PROP_OPENGL       // opengl support
-//};
 
 void imshow(const std::string& winname, cv::InputArray mat);
 

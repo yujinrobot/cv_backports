@@ -45,6 +45,7 @@
 #include <opencv2/highgui/highgui_c.h>
 #include <opencv2/highgui/highgui.hpp>
 #include "../../include/cv_backports/imshow.hpp"
+#include "../../include/cv_backports/impl/imshow.hpp"
 
 using namespace cv;
 

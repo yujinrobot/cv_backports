@@ -50,6 +50,7 @@
 
 #include <opencv2/core/core.hpp>
 #include "../../include/cv_backports/imshow.hpp"
+#include "../../include/cv_backports/impl/imshow.hpp"
 
 #ifdef HAVE_QT_OPENGL
     #ifdef Q_WS_X11
