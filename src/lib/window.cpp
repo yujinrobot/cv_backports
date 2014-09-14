@@ -47,9 +47,7 @@
 #include "../../include/cv_backports/imshow.hpp"
 #include "../../include/cv_backports/impl/imshow.hpp"
 
-using namespace cv;
-
-void cvSetWindowProperty(const char* name, int prop_id, double prop_value)
+void cv_backports::cvSetWindowProperty(const char* name, int prop_id, double prop_value)
 {
     switch(prop_id)
     {
@@ -57,15 +55,15 @@ void cvSetWindowProperty(const char* name, int prop_id, double prop_value)
     case CV_WND_PROP_FULLSCREEN:
         if (!name || (prop_value!=CV_WINDOW_NORMAL && prop_value!=CV_WINDOW_FULLSCREEN))//bad argument
             break;
-        cvSetModeWindow_QT(name,prop_value);
+        cv_backports::cvSetModeWindow_QT(name,prop_value);
     break;
 
     case CV_WND_PROP_AUTOSIZE:
-        cvSetPropWindow_QT(name,prop_value);
+      cv_backports::cvSetPropWindow_QT(name,prop_value);
     break;
 
     case CV_WND_PROP_ASPECTRATIO:
-        cvSetRatioWindow_QT(name,prop_value);
+      cv_backports::cvSetRatioWindow_QT(name,prop_value);
     break;
 
     default:;
@@ -73,7 +71,7 @@ void cvSetWindowProperty(const char* name, int prop_id, double prop_value)
 }
 
 /* return -1 if error */
-double cvGetWindowProperty(const char* name, int prop_id)
+double cv_backports::cvGetWindowProperty(const char* name, int prop_id)
 {
     if (!name)
         return -1;
@@ -81,19 +79,19 @@ double cvGetWindowProperty(const char* name, int prop_id)
     switch(prop_id)
     {
     case CV_WND_PROP_FULLSCREEN:
-        return cvGetModeWindow_QT(name);
+        return cv_backports::cvGetModeWindow_QT(name);
     break;
 
     case CV_WND_PROP_AUTOSIZE:
-        return cvGetPropWindow_QT(name);
+        return cv_backports::cvGetPropWindow_QT(name);
     break;
 
     case CV_WND_PROP_ASPECTRATIO:
-        return cvGetRatioWindow_QT(name);
+        return cv_backports::cvGetRatioWindow_QT(name);
     break;
 
     case CV_WND_PROP_OPENGL:
-        return cvGetOpenGlProp_QT(name);
+        return cv_backports::cvGetOpenGlProp_QT(name);
     break;
 
     default:
@@ -103,37 +101,37 @@ double cvGetWindowProperty(const char* name, int prop_id)
 
 void cv_backports::namedWindow( const std::string& winname, int flags )
 {
-    cvNamedWindow( winname.c_str(), flags );
+  cv_backports::cvNamedWindow( winname.c_str(), flags );
 }
 
 void cv_backports::destroyWindow( const std::string& winname )
 {
-    cvDestroyWindow( winname.c_str() );
+  cv_backports::cvDestroyWindow( winname.c_str() );
 }
 
 void cv_backports::destroyAllWindows()
 {
-    cvDestroyAllWindows();
+    cv_backports::cvDestroyAllWindows();
 }
 
 void cv_backports::resizeWindow( const std::string& winname, int width, int height )
 {
-    cvResizeWindow( winname.c_str(), width, height );
+    cv_backports::cvResizeWindow( winname.c_str(), width, height );
 }
 
 void cv_backports::moveWindow( const std::string& winname, int x, int y )
 {
-    cvMoveWindow( winname.c_str(), x, y );
+  cv_backports::cvMoveWindow( winname.c_str(), x, y );
 }
 
 void cv_backports::setWindowProperty(const std::string& winname, int prop_id, double prop_value)
 {
-    cvSetWindowProperty( winname.c_str(), prop_id, prop_value);
+  cv_backports::cvSetWindowProperty( winname.c_str(), prop_id, prop_value);
 }
 
 double cv_backports::getWindowProperty(const std::string& winname, int prop_id)
 {
-    return cvGetWindowProperty(winname.c_str(), prop_id);
+    return cv_backports::cvGetWindowProperty(winname.c_str(), prop_id);
 }
 
 int cv_backports::waitKey(int delay)
@@ -142,48 +140,48 @@ int cv_backports::waitKey(int delay)
 }
 
 int cv_backports::createTrackbar(const std::string& trackbarName, const std::string& winName,
-                   int* value, int count, TrackbarCallback callback,
+                   int* value, int count, cv::TrackbarCallback callback,
                    void* userdata)
 {
-    return cvCreateTrackbar2(trackbarName.c_str(), winName.c_str(),
+    return cv_backports::cvCreateTrackbar2(trackbarName.c_str(), winName.c_str(),
                              value, count, callback, userdata);
 }
 
 void cv_backports::setTrackbarPos( const std::string& trackbarName, const std::string& winName, int value )
 {
-    cvSetTrackbarPos(trackbarName.c_str(), winName.c_str(), value );
+  cv_backports::cvSetTrackbarPos(trackbarName.c_str(), winName.c_str(), value );
 }
 
 int cv_backports::getTrackbarPos( const std::string& trackbarName, const std::string& winName )
 {
-    return cvGetTrackbarPos(trackbarName.c_str(), winName.c_str());
+    return cv_backports::cvGetTrackbarPos(trackbarName.c_str(), winName.c_str());
 }
 
 void cv_backports::setMouseCallback( const std::string& windowName, MouseCallback onMouse, void* param)
 {
-    cvSetMouseCallback(windowName.c_str(), onMouse, param);
+  cv_backports::cvSetMouseCallback(windowName.c_str(), onMouse, param);
 }
 
 int cv_backports::startWindowThread()
 {
-    return cvStartWindowThread();
+  return 0;
 }
 
 // OpenGL support
 
 void cv_backports::setOpenGlDrawCallback(const std::string& name, OpenGlDrawCallback callback, void* userdata)
 {
-    cvSetOpenGlDrawCallback(name.c_str(), callback, userdata);
+  //  cv_backports::cvSetOpenGlDrawCallback(name.c_str(), callback, userdata);
 }
 
 void cv_backports::setOpenGlContext(const std::string& windowName)
 {
-    cvSetOpenGlContext(windowName.c_str());
+  //    cvSetOpenGlContext(windowName.c_str());
 }
 
 void cv_backports::updateWindow(const std::string& windowName)
 {
-    cvUpdateWindow(windowName.c_str());
+//    cvUpdateWindow(windowName.c_str());
 }
 
 #ifdef HAVE_OPENGL
@@ -202,15 +200,15 @@ namespace
 }
 #endif // HAVE_OPENGL
 
-void cv_backports::imshow( const std::string& winname, InputArray _img )
+void cv_backports::imshow( const std::string& winname, cv::InputArray _img )
 {
-    const Size size = _img.size();
+    const cv::Size size = _img.size();
 #ifndef HAVE_OPENGL
     CV_Assert(size.width>0 && size.height>0);
     {
-        Mat img = _img.getMat();
+      cv::Mat img = _img.getMat();
         CvMat c_img = img;
-        cvShowImage(winname.c_str(), &c_img);
+        cv_backports::cvShowImage(winname.c_str(), &c_img);
     }
 #else
     const double useGl = getWindowProperty(winname, WND_PROP_OPENGL);
@@ -292,12 +290,12 @@ void cvUpdateWindow(const char*)
 
 #endif // !HAVE_OPENGL
 
-CvFont cv_backports::fontQt(const std::string& nameFont, int pointSize, Scalar color, int weight,  int style, int /*spacing*/)
+CvFont cv_backports::fontQt(const std::string& nameFont, int pointSize, cv::Scalar color, int weight,  int style, int /*spacing*/)
 {
 return cv_backports::cvFontQt(nameFont.c_str(), pointSize,color,weight, style);
 }
 
-void cv_backports::addText( const Mat& img, const std::string& text, Point org, CvFont font)
+void cv_backports::addText( const cv::Mat& img, const std::string& text, cv::Point org, CvFont font)
 {
     CvMat _img = img;
     cv_backports::cvAddText( &_img, text.c_str(), org,&font);

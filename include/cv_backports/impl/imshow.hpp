@@ -44,6 +44,35 @@ int cvCreateButton( const char* button_name CV_DEFAULT(NULL),CvButtonCallback on
 
 int cvWaitKey(int delay);
 
+
+
+int cvNamedWindow(const char* name, int flags);
+void cvDestroyWindow(const char* name);
+void cvDestroyAllWindows();
+void cvResizeWindow(const char* name, int width, int height);
+void cvMoveWindow(const char* name, int x, int y);
+
+void cvSetWindowProperty(const char* name, int prop_id, double prop_value);
+double cvGetWindowProperty(const char* name, int prop_id);
+void cvSetModeWindow_QT(const char* name, double prop_value);
+void cvSetPropWindow_QT(const char* name,double prop_value);
+void cvSetRatioWindow_QT(const char* name,double prop_value);
+double cvGetModeWindow_QT(const char* name);
+double cvGetPropWindow_QT(const char* name);
+double cvGetRatioWindow_QT(const char* name);
+double cvGetOpenGlProp_QT(const char* name);
+
+void* cvGetWindowHandle(const char* name);
+const char* cvGetWindowName(void* window_handle);
+int cvCreateTrackbar2(const char* name_bar, const char* window_name, int* val, int count, CvTrackbarCallback2 on_notify, void* userdata);
+int cvCreateTrackbar(const char* name_bar, const char* window_name, int* value, int count, CvTrackbarCallback on_change);
+int cvGetTrackbarPos(const char* name_bar, const char* window_name);
+void cvSetTrackbarPos(const char* name_bar, const char* window_name, int pos);
+void cvSetMouseCallback(const char* window_name, CvMouseCallback on_mouse, void* param);
+void cvShowImage(const char* name, const CvArr* arr);
+
+void cvSetOpenGlDrawCallback(const char* window_name, CvOpenGlDrawCallback callback, void* userdata);
+
 } // cv_backports
 
 #endif /* cv_backports_IMSHOW_HPP_ */
