@@ -1,6 +1,6 @@
 <package>
   <name>cv_backports</name>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
   <description>
    Backporting features from the 2.4.x.y series of opencv releases to indigo.
   </description>

@@ -2,6 +2,10 @@
 Changelog
 =========
 
+0.1.2 (2014-09-17)
+------------------
+* Bugfix hanging problems due to global variable name conflicts with opencv.
+
 0.1.1 (2014-09-15)
 ------------------
 * bugfix parallel thread support
