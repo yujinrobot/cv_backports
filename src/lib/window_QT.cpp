@@ -65,8 +65,8 @@ static int parameterSystemC = 1;
 static char* parameterSystemV[] = {(char*)""};
 static bool multiThreads = false;
 static int last_key = -1;
-QWaitCondition key_pressed;
-QMutex mutexKey;
+QWaitCondition key_pressed_backports;
+QMutex mutexKey_backports;
 static const unsigned int threshold_zoom_img_region = 30;
 //the minimum zoom value to start displaying the values in the grid
 //that is also the number of pixel per grid
@@ -273,13 +273,13 @@ int cv_backports::cvWaitKey(int delay)
 
     if (multiThreads)
     {
-        mutexKey.lock();
-        if (key_pressed.wait(&mutexKey, delayms)) //false if timeout
+        mutexKey_backports.lock();
+        if (key_pressed_backports.wait(&mutexKey_backports, delayms)) //false if timeout
         {
             result = last_key;
         }
         last_key = -1;
-        mutexKey.unlock();
+        mutexKey_backports.unlock();
     }
     else
     {
@@ -298,7 +298,7 @@ int cv_backports::cvWaitKey(int delay)
             if (!guiMainThread)//when all the windows are deleted
                 return result;
 
-            mutexKey.lock();
+            mutexKey_backports.lock();
             if (last_key != -1)
             {
                 result = last_key;
@@ -306,7 +306,7 @@ int cv_backports::cvWaitKey(int delay)
                 guiMainThread->timer->stop();
                 //printf("keypressed\n");
             }
-            mutexKey.unlock();
+            mutexKey_backports.unlock();
 
             if (result!=-1)
             {
@@ -2029,10 +2029,10 @@ void CvWindow::keyPressEvent(QKeyEvent *evnt)
     //control plus (Z, +, -, up, down, left, right) are used for zoom/panning functions
         if (evnt->modifiers() != Qt::ControlModifier)
         {
-        mutexKey.lock();
+        mutexKey_backports.lock();
         last_key = key;
-        mutexKey.unlock();
-        key_pressed.wakeAll();
+        mutexKey_backports.unlock();
+        key_pressed_backports.wakeAll();
         //evnt->accept();
     }
 
