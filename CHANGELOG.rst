@@ -2,6 +2,10 @@
 Changelog
 =========
 
+0.1.3 (2014-09-23)
+------------------
+* Install rules for headers.
+
 0.1.2 (2014-09-17)
 ------------------
 * Bugfix hanging problems due to global variable name conflicts with opencv.
