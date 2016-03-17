@@ -2,6 +2,10 @@
 Changelog
 =========
 
+0.1.4 (2016-03-17)
+------------------
+* fix qt dependency lookup in cmake
+
 0.1.3 (2014-09-23)
 ------------------
 * Install rules for headers.
