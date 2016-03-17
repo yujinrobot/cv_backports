@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
     roslib
 )
 find_package(Qt4 REQUIRED)
+include(${QT_USE_FILE})
 find_package(OpenCV REQUIRED)
 
 ##############################################################################
