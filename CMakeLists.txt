@@ -14,7 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 find_package(Qt4 REQUIRED)
 include(${QT_USE_FILE})
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 2 REQUIRED)
 
 ##############################################################################
 # Project Configuration
@@ -31,7 +31,7 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 ##############################################################################
 
 catkin_package(
-    INCLUDE_DIRS include 
+    INCLUDE_DIRS include
     LIBRARIES ${PROJECT_NAME}
     DEPENDS OpenCV
 )
