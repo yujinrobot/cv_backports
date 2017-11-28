@@ -13,8 +13,13 @@ if(HAVE_QT_OPENGL)
 endif()
 #include(${QT_USE_FILE})
 
-QT4_ADD_RESOURCES(_RCC_OUTFILES window_QT.qrc)
-QT4_WRAP_CPP(_MOC_OUTFILES window_QT.h)
+if (Qt5_FOUND)
+  QT5_ADD_RESOURCES(_RCC_OUTFILES window_QT.qrc)
+  QT5_WRAP_CPP(_MOC_OUTFILES window_QT.h)
+else()
+  QT4_ADD_RESOURCES(_RCC_OUTFILES window_QT.qrc)
+  QT4_WRAP_CPP(_MOC_OUTFILES window_QT.h)
+endif()
 
 list(APPEND SOURCES ${_MOC_OUTFILES} ${_RCC_OUTFILES})
 #ocv_check_flag_support(CXX -Wno-missing-declarations _have_flag)
@@ -30,9 +35,7 @@ add_library(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME}
                           ${catkin_LIBRARIES}
                           ${OpenCV_LIBRARIES}
-                          ${QT_QTCORE_LIBRARY}
-                          ${QT_QTGUI_LIBRARY}
-                          ${QT_QTTEST_LIBRARY}
+                          ${QT_LIBRARIES}
 )
 
 ##############################################################################
